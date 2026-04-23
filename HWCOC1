@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highway Church of Christ | Welcome Home</title>
+    
+    <!-- Google Fonts for sleek, modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- DESIGN TOKENS & COLOR PALETTE --- */
+        :root {
+            --color-cream: #F9F7F1;
+            --color-cream-dark: #EAE6DB;
+            --color-deep-green: #1E3F2B;
+            --color-deep-green-hover: #2A5A3D;
+            --color-muted-blue: #5C7484;
+            --color-muted-blue-hover: #4A5D6A;
+            --color-text-dark: #222222;
+            --color-text-light: #FFFFFF;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --transition: all 0.3s ease;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-cream);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--color-deep-green);
+            color: var(--color-text-light);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-deep-green-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-text-light);
+            border-color: var(--color-text-light);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-text-light);
+            color: var(--color-deep-green);
+        }
+
+        .btn-blue {
+            background-color: var(--color-muted-blue);
+            color: var(--color-text-light);
+        }
+
+        .btn-blue:hover {
+            background-color: var(--color-muted-blue-hover);
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--color-text-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-cream-dark);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Background image evoking the Ozarks & Community */
+            background: linear-gradient(to bottom, rgba(30, 63, 43, 0.4), rgba(30, 63, 43, 0.8)), 
+                        url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=2000&auto=format&fit=crop') no-repeat center center/cover;
+            color: var(--color-text-light);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 20px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* --- PLAN A VISIT FUNNEL --- */
+        .plan-visit {
+            background-color: var(--color-cream);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .plan-visit h2 {
+            color: var(--color-deep-green);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .plan-visit p {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            color: var(--color-muted-blue);
+            font-size: 1.1rem;
+        }
+
+        .service-times {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .time-block strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-deep-green);
+        }
+
+        /* --- PATHWAYS (COMMUNITY CONNECTION) --- */
+        .pathways {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .pathway-card {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .pathway-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(30,63,43,0.9) 0%, rgba(30,63,43,0.2) 100%);
+            transition: var(--transition);
+        }
+
+        .pathway-card:hover::before {
+            background: linear-gradient(to top, rgba(92,116,132,0.9) 0%, rgba(92,116,132,0.4) 100%);
+        }
+
+        .pathway-card-content {
+            position: relative;
+            z-index: 10;
+            color: var(--color-text-light);
+        }
+
+        .pathway-card h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .pathway-card p {
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        /* --- MEDIA / SERMONS INTEGRATION --- */
+        .media-section {
+            background-color: var(--color-deep-green);
+            padding: 100px 0;
+            color: var(--color-text-light);
+        }
+
+        .media-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 50px;
+        }
+
+        .media-header h2 {
+            font-size: 2.5rem;
+        }
+
+        .sermon-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .sermon-card {
+            background-color: var(--color-cream);
+            border-radius: 8px;
+            overflow: hidden;
+            color: var(--color-text-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .sermon-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .sermon-img {
+            height: 200px;
+            background-color: var(--color-cream-dark);
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(30, 63, 43, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            transition: var(--transition);
+        }
+
+        .sermon-card:hover .play-btn {
+            background-color: var(--color-muted-blue);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .sermon-info {
+            padding: 25px;
+        }
+
+        .sermon-date {
+            font-size: 0.85rem;
+            color: var(--color-muted-blue);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .sermon-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--color-deep-green);
+        }
+
+        .sermon-speaker {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* --- FOOTER & LOCATION --- */
+        footer {
+            background-color: var(--color-muted-blue);
+            color: var(--color-text-light);
+            padding: 80px 0 40px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-info h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-info p {
+            margin-bottom: 10px;
+            font-weight: 300;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 900px) {
+            .pathways {
+                grid-template-columns: 1fr;
+            }
+            .sermon-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none; /* In a real build, add a hamburger menu */
+            }
+            .hero-buttons {
+                flex-direction: column;
+            }
+            .sermon-grid {
+                grid-template-columns: 1fr;
+            }
+            .media-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            .service-times {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">Highway</div>
+            <nav class="nav-links">
+                <a href="#">About</a>
+                <a href="#">Visit</a>
+                <a href="#">Ministries</a>
+                <a href="#">Sermons</a>
+                <a href="#">Give</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION (Edge-to-edge cinematic vibe) -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome Home to Highway.</h1>
+                <p>A vibrant Church of Christ family in the heart of the Ozarks. We are a community grounded in scripture, deeply connected to one another, and open to all.</p>
+                <div class="hero-buttons">
+                    <a href="#visit" class="btn btn-primary">Plan a Visit</a>
+                    <a href="#media" class="btn btn-secondary">Watch Online</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLAN A VISIT FUNNEL -->
+        <section id="visit" class="plan-visit">
+            <div class="container">
+                <h2>We're Saving a Seat for You</h2>
+                <p>Whether you've grown up in church or you're just exploring faith, there is a place for you here. Join us this Sunday for genuine worship and deep connection.</p>
+                
+                <div class="service-times">
+                    <div class="time-block">
+                        <strong>9:00 AM</strong>
+                        <span>Bible Classes</span>
+                    </div>
+                    <div class="time-block">
+                        <strong>10:00 AM</strong>
+                        <span>Morning Worship</span>
+                    </div>
+                </div>
+
+                <a href="#" class="btn btn-blue">What to Expect</a>
+            </div>
+        </section>
+
+        <!-- PATHWAYS / HIGHLIGHTS (Dynamic connection points) -->
+        <section class="pathways">
+            <div class="pathway-card" style="background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1000&auto=format&fit=crop');">
+                <div class="pathway-card-content">
+                    <h3>Community Groups</h3>
+                    <p>Find your people and grow together in living rooms across the Ozarks.</p>
+                    <a href="#" class="btn btn-secondary">Join a Group</a>
+                </div>
+            </div>
+            
+            <div class="pathway-card" style="background-image: url('https://images.unsplash.com/photo-1593113589914-009f22c15d22?q=80&w=1000&auto=format&fit=crop');">
+                <div class="pathway-card-content">
+                    <h3>Serve With Us</h3>
+                    <p>Discover your purpose by being the hands and feet of Jesus in our community.</p>
+                    <a href="#" class="btn btn-secondary">Get Involved</a>
+                </div>
+            </div>
+
+            <div class="pathway-card" style="background-image: url('https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=1000&auto=format&fit=crop');">
+                <div class="pathway-card-content">
+                    <h3>Next Generation</h3>
+                    <p>Dynamic ministries tailored for your children and teenagers to encounter God.</p>
+                    <a href="#" class="btn btn-secondary">Highway Kids & Youth</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEEP MEDIA INTEGRATION (Sermons) -->
+        <section id="media" class="media-section">
+            <div class="container">
+                <div class="media-header">
+                    <h2>Recent Messages</h2>
+                    <a href="#" class="btn btn-secondary">View Sermon Library</a>
+                </div>
+
+                <div class="sermon-grid">
+                    <!-- Sermon 1 -->
+                    <a href="#" class="sermon-card">
+                        <div class="sermon-img" style="background-image: url('https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?q=80&w=800&auto=format&fit=crop');">
+                            <div class="play-btn">▶</div>
+                        </div>
+                        <div class="sermon-info">
+                            <span class="sermon-date">October 15, 2023</span>
+                            <h3>Rooted in the Valley</h3>
+                            <span class="sermon-speaker">Pastor John Doe • Series: Firm Foundation</span>
+                        </div>
+                    </a>
+
+                    <!-- Sermon 2 -->
+                    <a href="#" class="sermon-card">
+                        <div class="sermon-img" style="background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&auto=format&fit=crop');">
+                            <div class="play-btn">▶</div>
+                        </div>
+                        <div class="sermon-info">
+                            <span class="sermon-date">October 8, 2023</span>
+                            <h3>Faith Like a Mustard Seed</h3>
+                            <span class="sermon-speaker">Pastor John Doe • Series: Firm Foundation</span>
+                        </div>
+                    </a>
+
+                    <!-- Sermon 3 -->
+                    <a href="#" class="sermon-card">
+                        <div class="sermon-img" style="background-image: url('https://images.unsplash.com/photo-1507692049790-de58290a4334?q=80&w=800&auto=format&fit=crop');">
+                            <div class="play-btn">▶</div>
+                        </div>
+                        <div class="sermon-info">
+                            <span class="sermon-date">October 1, 2023</span>
+                            <h3>The Movement of God</h3>
+                            <span class="sermon-speaker">Guest Speaker • Series: Standalone</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER & LOCATION -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h2>Highway Church of Christ</h2>
+                    <p>1234 Ozark Mountain Trail<br>Bentonville, AR 72712</p>
+                    <p>hello@highwaychurch.org<br>(555) 123-4567</p>
+                    <br>
+                    <a href="#" class="btn btn-primary" style="background-color: var(--color-deep-green); border-color: transparent;">Get Directions</a>
+                </div>
+                <div class="footer-links">
+                    <h3 style="margin-bottom: 20px; font-family: var(--font-heading);">Quick Links</h3>
+                    <ul style="display: flex; flex-direction: column; gap: 10px;">
+                        <li><a href="#">What We Believe</a></li>
+                        <li><a href="#">Our Leadership</a></li>
+                        <li><a href="#">Study the Bible</a></li>
+                        <li><a href="#">Member Portal</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Highway Church of Christ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
